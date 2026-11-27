@@ -1,0 +1,40 @@
+# Participant data. The hackathon dataset must never be committed.
+/data/
+/screening/
+/spon-data/
+/dev/
+
+# Pipeline outputs and the generated review page (it embeds the decisions).
+output/
+joined.jsonl
+joined.csv
+clean.jsonl
+clean.csv
+features.csv
+rules_decisions.csv
+tree_decisions.csv
+review.html
+overrides.json
+*.jsonl
+*.csv
+*.tmp
+
+# Keep the synthetic fixtures (no real customers).
+!tests/fixtures/
+!tests/fixtures/**
+!tests/fixtures/**/*.jsonl
+!tests/fixtures/**/*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

@@ -1,0 +1,2 @@
+Synthetic fixture for tests and the demo review UI.
+Not the hackathon dataset. No real customer, hit, or practice label is in this folder.

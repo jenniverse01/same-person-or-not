@@ -1,0 +1,4 @@
+{"check_id": "KYC-1001", "applicant_id": "APP-1001", "result": "approved", "document_number": "P1001", "checked_at": "2024-06-01", "verified_name": "Amara Boateng", "verified_dob": "1991-08-08", "document_country": "Ghana"}
+{"check_id": "KYC-2001", "applicant_id": "APP-2001", "result": "approved", "document_number": "P2001", "checked_at": "2024-06-01", "verified_name": "Helena Costa", "verified_dob": "1985-04-12", "document_country": "Portugal"}
+{"check_id": "KYC-5001", "applicant_id": "APP-5001", "result": "approved", "document_number": "P5001", "checked_at": "2024-06-01", "verified_name": "Nora Petrov", "verified_dob": "1979-06-01", "document_country": "Norway"}
+{"check_id": "KYC-5002", "applicant_id": "APP-5001", "result": "rejected", "document_number": "P5002", "checked_at": "2020-01-01", "verified_name": "Nora Petrov", "verified_dob": "1979-06-01", "document_country": "Norway"}

@@ -1,0 +1,6 @@
+{"hit_id": "H-1001", "decision": "DIFFERENT_ENTITY", "reason_codes": ["NAME_MISMATCH_VERIFIED"], "customer_record_ids": ["CUS-1001"]}
+{"hit_id": "H-1002", "decision": "SAME_ENTITY", "reason_codes": ["NAME_DOB_LOCATION_MATCH"], "customer_record_ids": ["CUS-2001"]}
+{"hit_id": "H-1003", "decision": "REVIEW", "reason_codes": ["INSUFFICIENT_DATA"], "customer_record_ids": ["CUS-3001"]}
+{"hit_id": "H-1004", "decision": "SAME_ENTITY", "reason_codes": ["NAME_DOB_LOCATION_MATCH"], "customer_record_ids": ["CUS-4001"]}
+{"hit_id": "H-1005", "decision": "REVIEW", "reason_codes": ["INSUFFICIENT_DATA"], "customer_record_ids": ["CUS-5001"]}
+{"hit_id": "H-1007", "decision": "SAME_ENTITY", "reason_codes": ["NAME_LOCATION_MATCH"], "customer_record_ids": ["CUS-7001"]}
