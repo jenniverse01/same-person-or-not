@@ -77,7 +77,89 @@ The dataset is provided to event participants only and is **not** in this reposi
 
 Participants receive a development set (about 440 alerts and 820 hits, plus a system of record of about 72,000 customer records and the bank's other systems) without answers, and 50 practice labels so a system can be checked while it is built. Official scoring is mainly on a separate unseen set from the same bank.
 
+## Run it locally
+
+Nothing in this pipeline uploads data. Point it at the dev folder on your machine (the folder that contains `hits.jsonl`, `alerts.jsonl`, `customers.jsonl`, and the rest). `validate.py` and `POLICY.md` live one level above that. For example:
+
+```bash
+export SPON_DATA="/Users/jennl/Downloads/screening/dev"
+export SPON_VALIDATE="/Users/jennl/Downloads/screening"   # only needed for scoring
+```
+
+Do not copy that folder into the repo. `.gitignore` already blocks data folders, `output/`, jsonl and csv outputs, `overrides.json`, `review.html`, virtualenvs, and caches. The only jsonl in git is the small synthetic fixture under `tests/fixtures/dev`.
+
+### Pipeline
+
+From the repo root:
+
+```bash
+python -m spon run --data "$SPON_DATA"
+```
+
+That runs the four steps in order and writes, in the current directory (or `--workdir` / `SPON_OUT`):
+
+| File | What it is |
+| --- | --- |
+| `joined.jsonl`, `joined.csv` | one row per hit, customer facts beside watchlist facts |
+| `clean.jsonl`, `clean.csv` | dates, countries, names, and notes made comparable |
+| `features.csv` | comparison columns, plus the practice label where the dev folder has one |
+| `output/dev.jsonl` | the rules model's decision for every hit |
+| `rules_decisions.csv` | the same decisions, one line per hit, for a spreadsheet |
+
+`output/dev.jsonl` has one JSON object per hit: `hit_id`, `alert_id`, `decision`, `reason_code`, `customer_record_id`, `reason`, `evidence`.
+
+The same steps one at a time:
+
+```bash
+python -m spon join --data "$SPON_DATA"
+python -m spon clean
+python -m spon features --data "$SPON_DATA"
+python -m spon rules
+```
+
+The rules are the if-then list in `spon/model_rules.py`, taken from `POLICY.md`. Practice labels are not read there. They are a held-out check. A missing `practice_labels.jsonl` leaves the label columns in `features.csv` blank, so the same command can run on a folder that has no answers.
+
+The official check is the organisers' script, which is not part of this repo:
+
+```bash
+python3 "$SPON_VALIDATE/validate.py" \
+  --data "$SPON_DATA" \
+  --output output/dev.jsonl \
+  --score "$SPON_DATA/practice_labels.jsonl"
+```
+
+`python -m spon score` prints the same cost table for the rules file and for `tree_decisions.csv`. It imports `COST` from `validate.py` (pass `--validate` or set `SPON_VALIDATE`; otherwise it uses the parent of the data folder). The tree model (`model_tree.py`) is not in this repo, so score stops if `tree_decisions.csv` is missing. Scoring needs `pandas` (`python -m pip install pandas`). The gather, clean, features, and rules steps use only the standard library.
+
+### Review UI
+
+One command builds the decisions (if you pass `--build`) and serves a page on this machine only:
+
+```bash
+python -m spon review --data "$SPON_DATA" --build
+```
+
+Open the URL it prints (`http://127.0.0.1:8765` unless you pass `--port`). Add `--open` to launch a browser. The server binds to `127.0.0.1` and does not fetch anything from the network.
+
+The page is the screening queue: totals, a search box, filters, the hit list, and a detail pane for the selected hit (the decision and reason, the evidence ids, how the customer was found, and the customer record beside the watchlist hit). "Held by the safety net" counts hits the rules refused to clear because the name and date of birth agree and only the country differs.
+
+**My overrides** changes a decision and stores a note in `overrides.json` next to the other output (gitignored). The totals stay on the model's decisions. Pass `--html review.html` to also write a self-contained file; that file contains the decisions, so do not commit it or send it anywhere.
+
+To click through the UI with no real customers:
+
+```bash
+python -m spon review --data tests/fixtures/dev --workdir /tmp/spon-review --build --open
+```
+
+### Tests
+
+```bash
+python -m pip install pytest
+python -m pytest
+```
+
+The tests use `tests/fixtures/dev` only.
+
 ## Status
 
-This repository is being set up. The approach for resolving customers and watchlist profiles has not been chosen yet, and there is no runnable system here.
+The runnable system is the rules pipeline above, plus the local review page. A separate tree model is not included.
 

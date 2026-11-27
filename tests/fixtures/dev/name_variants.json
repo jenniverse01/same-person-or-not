@@ -1,0 +1,24 @@
+{
+  "groups": [
+    [
+      "mohamed",
+      "mohammed",
+      "muhammad"
+    ],
+    [
+      "helena",
+      "elena"
+    ]
+  ],
+  "company_legal_forms": [
+    "Ltd",
+    "Limited",
+    "Inc",
+    "LLC",
+    "PLC",
+    "GmbH",
+    "SA",
+    "BV",
+    "AG"
+  ]
+}

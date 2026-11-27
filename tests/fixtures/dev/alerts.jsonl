@@ -1,0 +1,11 @@
+{"alert_id": "A-1001", "screened_at": "2026-11-13", "customer": {"name": "Lina Okonkwo", "entity_type": "Individual", "dob": "1991-08-08"}, "email": "lina.okonkwo@example.com"}
+{"alert_id": "A-1002", "screened_at": "2026-11-13", "customer": {"name": "Helena Costa", "entity_type": "Individual", "dob": "1985-04-12", "country": "Portugal", "city": "Lisbon"}, "email": "helena.costa@example.com"}
+{"alert_id": "A-1003", "screened_at": "2026-11-13", "customer": {"name": "Sofia Marin", "entity_type": "Individual", "country": "France", "city": "Lyon"}}
+{"alert_id": "A-1004", "screened_at": "2026-11-13", "customer": {"name": "Jonah Adler", "entity_type": "Individual", "dob": "1988-03-14", "country": "United Kingdom"}, "email": "jonah.adler@example.com"}
+{"alert_id": "A-1005", "screened_at": "2026-11-13", "customer": {"name": "Nora Petrov", "entity_type": "Individual", "dob": "1979-06-01", "country": "Norway"}, "email": "nora.petrov@example.com"}
+{"alert_id": "A-1006", "screened_at": "2026-11-13", "customer": {"name": "Idris Bello", "entity_type": "Individual", "dob": "1994-02-02"}, "email": "idris.bello@example.com"}
+{"alert_id": "A-1007", "screened_at": "2026-11-13", "customer": {"name": "Northwind Trading", "entity_type": "Company", "country": "Germany", "city": "Hamburg"}, "email": "ops@northwind.example"}
+{"alert_id": "A-1008", "screened_at": "2026-11-13", "customer": {"name": "Priya Raman", "entity_type": "Individual", "country": "India", "city": "Pune"}, "login_handle": "priya.raman"}
+{"alert_id": "A-1009", "screened_at": "2026-11-13", "customer": {"name": "Omar Farouk", "entity_type": "Individual", "dob": "1970-01-15", "country": "Egypt"}, "account_ref": "ACC-9001"}
+{"alert_id": "A-1010", "screened_at": "2026-11-13", "customer": {"name": "Alex Morgan", "entity_type": "Individual"}, "account_ref": "ACC-JOINT"}
+{"alert_id": "A-1011", "screened_at": "2026-11-13", "customer": {"name": "Lina Okonkwo", "entity_type": "Individual", "dob": "1991-08-08"}, "email": "lina.okonkwo@example.com"}
